@@ -12,6 +12,7 @@ buildscript {
 plugins {
     id 'com.github.sherter.google-java-format' version '0.7.1'
     id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'net.ltgt.errorprone' version '0.6'
 }
 
 apply plugin: 'java'
@@ -56,6 +57,8 @@ dependencies {
     testImplementation 'org.slf4j:slf4j-simple:1.7.25'
     testImplementation 'commons-lang:commons-lang:2.6'
     testImplementation 'org.json:json:20180813'
+    errorprone 'com.google.errorprone:error_prone_core:2.3.2'
+    errorproneJavac 'com.google.errorprone:javac:1.8.0-u20'
 }
 
 task updateVersion(type: Copy) {
@@ -78,6 +81,10 @@ tasks.withType(Test) {
     systemProperty 'api.key', System.getProperty('api.key')
     systemProperty 'client.id', System.getProperty('client.id')
     systemProperty 'client.secret', System.getProperty('client.secret')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.errorprone.disableWarningsInGeneratedCode = true
 }
 
 javadoc {
