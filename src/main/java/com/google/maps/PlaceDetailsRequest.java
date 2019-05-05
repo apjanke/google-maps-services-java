@@ -138,6 +138,7 @@ public class PlaceDetailsRequest
     SCOPE("scope"),
     TYPES("types"),
     URL("url"),
+    USER_RATINGS_TOTAL("user_ratings_total"),
     UTC_OFFSET("utc_offset"),
     VICINITY("vicinity"),
     WEBSITE("website");

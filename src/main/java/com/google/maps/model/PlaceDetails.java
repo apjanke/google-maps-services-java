@@ -115,6 +115,11 @@ public class PlaceDetails implements Serializable {
    */
   public PriceLevel priceLevel;
 
+  /**
+   * The number of user ratings this place has received.
+   */
+  public int userRatingsTotal;
+
   /** The place's rating, from 1.0 to 5.0, based on aggregated user reviews. */
   public float rating;
 
